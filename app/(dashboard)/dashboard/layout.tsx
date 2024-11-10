@@ -1,14 +1,14 @@
-import Navbar from "@/app/components/layout/navbar";
-import Footer from "@/app/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 
 import React, { PropsWithChildren } from "react";
 
 const DashboardLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <div className=" min-h-screen bg-background flex flex-col">
+      <div className=" min-h-screen bg-background flex flex-col pb-1">
         <Navbar />
-        <main className="container mx-auto px-4 py-6 flex-1"> {children}</main>
+        <main className="container mx-auto  pt-4  flex-1 pb-1">{children}</main>
         <Footer />
       </div>
     </>
