@@ -55,3 +55,29 @@ export type Todo = {
   created: string;
   status: BoardStatus;
 };
+
+export interface ChartData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    tension?: number;
+    fill?: boolean;
+    borderColor?: string;
+    backgroundColor?: string[] | string;
+    pointRadius?: number;
+    pointHoverRadius?: number;
+    pointBackgroundColor?: string;
+    pointBorderColor?: string;
+    pointBorderWidth?: number;
+  }[];
+}
+
+export interface UserData {
+  id: string;
+  name: string;
+  email: string;
+  status: "active" | "inactive";
+  lastLogin: string;
+  role: string;
+}
