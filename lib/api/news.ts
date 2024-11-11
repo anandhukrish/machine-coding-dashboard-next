@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { newsApi } from "../axios";
 import { NewsApiResponse } from "../types";
 
@@ -13,7 +13,7 @@ export const useNews = (page: number) => {
       setLoading(true);
       setError(null);
       try {
-        const result = await newsApi.get<NewsApiResponse>("/top-headlines", {
+        const result = await axios.get<NewsApiResponse>("/api/news", {
           params: {
             page,
           },

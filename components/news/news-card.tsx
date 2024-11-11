@@ -29,14 +29,14 @@ const NewsCard = ({
           By ${author} - {timestampToDate(publishedAt)}
         </span>
         <CardDescription className="text-sm text-black font-medium">
-          {splitDesc ? description.slice(0, 80) : description}
+          {description && splitDesc ? description.slice(0, 80) : description}
         </CardDescription>
         <Button
           variant="link"
           className=" text-xs font-semibold capitalize pl-0 text-bold text-blue-600/80"
           onClick={() => setSplitDesc((prev) => !prev)}
         >
-          {splitDesc
+          {description && splitDesc
             ? description.length > 80
               ? "Read More"
               : ""
