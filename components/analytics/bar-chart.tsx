@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  TooltipItem,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { ChartData } from "@/lib/types";
@@ -31,7 +32,7 @@ const options = {
     },
     tooltip: {
       callbacks: {
-        label: (context: any) => {
+        label: (context: TooltipItem<"bar">) => {
           let label = context.dataset.label || "";
           if (label) {
             label += ": ";

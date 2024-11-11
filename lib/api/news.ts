@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
-import { newsApi } from "../axios";
 import { NewsApiResponse } from "../types";
 
 export const useNews = (page: number) => {

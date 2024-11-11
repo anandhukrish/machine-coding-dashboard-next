@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   Filler,
+  TooltipItem,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { ChartData } from "@/lib/types";
@@ -36,7 +37,7 @@ const options = {
       mode: "index" as const,
       intersect: false,
       callbacks: {
-        label: (context: any) => {
+        label: (context: TooltipItem<"line">) => {
           let label = context.dataset.label || "";
           if (label) {
             label += ": ";

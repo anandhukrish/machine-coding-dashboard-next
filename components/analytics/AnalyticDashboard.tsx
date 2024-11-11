@@ -28,7 +28,7 @@ const AnalyticDashboard = () => {
         }));
 
         setUserData(mockUsers);
-      } catch (err) {
+      } catch {
         const errorMessage =
           "Failed to load analytics data. Please try again later.";
         setError(errorMessage);
@@ -49,7 +49,7 @@ const AnalyticDashboard = () => {
   }
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <Card className="p-5">
           <CardTitle>User Activity</CardTitle>
           <CardContent>

@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
       },
     });
     return Response.json(response.data);
-  } catch (error) {
+  } catch {
     return Response.json({ message: "Failed to fetch news data", status: 500 });
   }
 }
