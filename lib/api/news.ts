@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import { newsApi } from "../axios";
 import { NewsApiResponse } from "../types";

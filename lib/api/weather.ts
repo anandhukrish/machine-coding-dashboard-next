@@ -5,11 +5,6 @@ import { useState } from "react";
 import { AxiosError } from "axios";
 import { weatherApi } from "../axios";
 
-interface ErrorType {
-  code: string;
-  message: string;
-}
-
 export const useWeather = () => {
   const [data, setData] = useState<WeatherApi | null>(null);
   const [loading, setLoading] = useState(false);

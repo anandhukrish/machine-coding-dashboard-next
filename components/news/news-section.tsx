@@ -20,7 +20,7 @@ const NewsSection = () => {
   const totalPages =
     news && news.totalResults && Math.ceil(news?.totalResults / 10);
 
-  let articles =
+  const articles =
     news &&
     news.articles &&
     news.articles.filter((article) => article.title !== "[Removed]");

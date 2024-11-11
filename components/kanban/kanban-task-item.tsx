@@ -4,12 +4,7 @@ import { Todo } from "@/lib/types";
 
 type KanbanTaskItemProps = Todo;
 
-const KanbanTaskItem = ({
-  created,
-  id,
-  title,
-  status,
-}: KanbanTaskItemProps) => {
+const KanbanTaskItem = ({ created, title, status }: KanbanTaskItemProps) => {
   return (
     <Card className="rounded-sm p-3 mb-3 mr-5">
       <CardTitle className="capitalize ">{title}</CardTitle>

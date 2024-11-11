@@ -27,7 +27,7 @@ const KanbanPage = () => {
   return (
     <div className="flex justify-between gap-6 pt-6">
       {boards.map((board) => (
-        <KanbanBoard {...board} />
+        <KanbanBoard {...board} key={board.id} />
       ))}
     </div>
   );

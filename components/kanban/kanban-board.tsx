@@ -5,7 +5,7 @@ import KanbanTaskItem from "./kanban-task-item";
 
 type KanbanBoardProps = Kanboard;
 
-const KanbanBoard = ({ id, status, title, lists }: KanbanBoardProps) => {
+const KanbanBoard = ({ title, lists }: KanbanBoardProps) => {
   return (
     <Card className=" w-[calc(100%_/_3)] rounded-md p-5 pr-0">
       <CardTitle className="text-lg capitalize mb-3">{title}</CardTitle>
