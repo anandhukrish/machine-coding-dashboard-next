@@ -1,33 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
-import Image from "next/image";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import { Articles } from "@/lib/types";
+import { timestampToDate } from "@/lib/utils";
 
-const NewsCard = () => {
+const NewsCard = ({
+  urlToImage,
+  url,
+  title,
+  description,
+  author,
+  publishedAt,
+}: Articles) => {
+  const [splitDesc, setSplitDesc] = useState(true);
+
   return (
     <Card className="overflow-hidden p-5 ">
-      <Image
-        src="/favicon.ico"
-        alt=""
-        width="100"
-        height="180"
-        className="!w-full !h-36 object-cover rounded-md"
-      ></Image>
+      {urlToImage && (
+        <img
+          src={urlToImage}
+          alt={title && ""}
+          className="w-full h-[9.5rem] object-cover rounded-md object-top"
+        />
+      )}
       <CardContent className="px-0 py-5">
-        <CardTitle className="text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium,
-          temporibus?
-        </CardTitle>
-        <span className="text-xs text-slate-500/80">By blaa date</span>
-        <CardDescription className="text-base text-black font-medium">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        <CardTitle className="text-lg">{title}</CardTitle>
+        <span className="text-xs text-slate-500/80">
+          By ${author} - {timestampToDate(publishedAt)}
+        </span>
+        <CardDescription className="text-sm text-black font-medium">
+          {splitDesc ? description.slice(0, 80) : description}
         </CardDescription>
         <Button
           variant="link"
-          className=" text-sm font-semibold capitalize pl-0 text-bold text-blue-600/80"
+          className=" text-xs font-semibold capitalize pl-0 text-bold text-blue-600/80"
+          onClick={() => setSplitDesc((prev) => !prev)}
         >
-          Read More
+          {splitDesc
+            ? description.length > 80
+              ? "Read More"
+              : ""
+            : "Read Less"}
         </Button>
         <div className="text-center">
           <Button
@@ -35,7 +48,9 @@ const NewsCard = () => {
             asChild
             className="text-blue-600/80 capitalize text-base font-semibold"
           >
-            <Link href="/">View Full Article</Link>
+            <a href={url} target="_blank">
+              View Full Article
+            </a>
           </Button>
         </div>
       </CardContent>

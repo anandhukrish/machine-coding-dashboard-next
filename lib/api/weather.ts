@@ -1,7 +1,9 @@
+"use client";
+
+import { WeatherApi } from "./../types";
 import { useState } from "react";
-import axios, { AxiosError } from "axios";
-import { log } from "console";
-import { WeatherApi } from "../types";
+import { AxiosError } from "axios";
+import { weatherApi } from "../axios";
 
 interface ErrorType {
   code: string;
@@ -17,31 +19,25 @@ export const useWeather = () => {
     setLoading(true);
     setError(null);
     try {
-      const result = await axios.get<WeatherApi>(
-        process.env.NEXT_PUBLIC_WEATHER_BASE_URL,
-        {
-          params: {
-            q: city,
-            appid: process.env.NEXT_PUBLIC_WEATHER_API_KEY,
-          },
-        }
-      );
+      const result = await weatherApi.get<WeatherApi>("/weather", {
+        params: {
+          q: city,
+        },
+      });
       setData(result.data);
     } catch (error: unknown) {
-      console.log(error, error instanceof AxiosError);
+      setData(null);
       if (error instanceof AxiosError) {
         if (
           error.response &&
           error.response.data &&
           typeof error.response.data === "object"
         ) {
-          console.log(error.response.data.message);
-          setError(error.response.data.message);
+          setError("City not found. Please check the spelling and try again.");
         } else {
           setError(error.message);
         }
-      }
-      if (error instanceof Error) {
+      } else if (error instanceof Error) {
         setError(error.message);
       }
     } finally {

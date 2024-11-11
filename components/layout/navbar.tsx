@@ -34,7 +34,7 @@ const Navbar = () => {
         <div className="flex gap-6 ">
           <Link
             href={"/dashboard/weather-news"}
-            className="flex gap-2 items-center justify-center"
+            className="flex gap-2 items-center justify-center text-sm md:text-base"
           >
             <LayoutDashboard className="size-4" />
             Dashboard
@@ -45,11 +45,11 @@ const Navbar = () => {
                 href={route.href}
                 key={index}
                 className={cn(
-                  "flex gap-2 items-center justify-center p-2 rounded-xl transition-all duration-500",
+                  "flex gap-2 items-center justify-center p-2 rounded-xl transition-all duration-500 text-sm",
                   route.active(pathname) && " bg-slate-400/35"
                 )}
               >
-                <route.icon className="size-4" />
+                <route.icon className="size-4 hidden md:block" />
                 {route.name}
               </Link>
             ))}

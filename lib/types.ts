@@ -9,7 +9,8 @@ export type WeatherApi = {
   weather: Weather[];
   main: {
     temp: number;
-    humisity: number;
+    humidity: number;
+    feels_like: number;
   };
   visibility: number;
   sys: {
@@ -17,20 +18,40 @@ export type WeatherApi = {
     sunset: number;
   };
   name: string;
+  wind: {
+    speed: number;
+  };
 };
 
-export type NewsApi = {};
+export type NewsApiResponse = {
+  status: string;
+  totalResults: number;
+  articles: Articles[];
+};
 
-type BoardStatus = "started" | "ongoing" | "completed";
+export type Articles = {
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  source: { id: string; name: string };
+  title: string;
+  url: string;
+  urlToImage: string;
+};
+
+type BoardStatus = "todo" | "in-progress" | "done";
 
 export type Kanboard = {
   id: string;
   status: BoardStatus;
-  tasks: Task[];
+  title: string;
+  lists: Todo[];
 };
 
-export type Task = {
+export type Todo = {
   id: string;
-  name: string;
+  title: string;
   created: string;
+  status: BoardStatus;
 };
